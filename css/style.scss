@@ -1,0 +1,372 @@
+$maincolor: #093394;
+$backgroundcolor: #9db5eb;
+$yellowtxt: #bdb411;
+
+
+html, body{
+    background-color: $backgroundcolor;
+    height: 100%;
+    font-family: 'Avenir', sans-serif;
+}
+
+
+header{
+    height: 70%;
+    max-height: 300px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.curvedbanner{
+    background-color: $maincolor;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0px;
+    left: -30%;
+    right: -30%;
+    bottom: 0px;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    z-index: 1;
+}
+
+
+h1{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-size: 3em;
+    color: #000;
+    text-shadow: 1px 1px 1px #666;
+}
+
+
+.logo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-size: 3em;
+    z-index: 1;
+}
+
+h2{
+    position: relative;
+    color: $yellowtxt;
+    text-align: center;
+    font-family: 'Avenir', sans-serif;
+    font-size: .9em;
+    z-index: 1;
+}
+
+footer{
+    height: 70%;
+    top: 100%;
+    max-height: 40px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;  
+}
+
+.footerbox{
+    background-color: $maincolor;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: -30%;
+    right: -30%;
+    bottom: 0px;
+}
+
+
+
+/*Guide*/
+
+h3{
+    font-size: 25px;
+    font-weight: 100;
+    color: #2C2C2C;
+    margin: 20px 25px;
+}
+
+.open{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    left: 90%;
+    top: 300px;
+    margin-left: -80px;
+    margin-top: -10px;
+    border: 2px solid $yellowtxt;
+    background-color: $maincolor;
+    border-radius: 6px;
+    padding: 10px 30px;
+    color: $yellowtxt;
+    transition: all ease-out 0.6s;
+}
+
+.open:hover{
+    border: 2px solid #aaa;
+    box-shadow: 0 0 8px #ccc inset;
+    transition: all ease-out 0.6s;
+}
+
+.con{
+    position: fixed;
+    width: 400px;
+    height: 238px;
+    left: 50%;
+    top: 50%;
+    margin-top: -119px;
+    margin-left: -200px;
+    background-color: #F3F3F3;
+    border-radius: 6px;
+    box-shadow: 0px 0px 24px rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+.con:before{
+    content:'';
+    position: absolute;
+    left: -14px;
+    top: 28px;
+    border-style: solid;
+    border-width: 10px 14px 10px 0;
+    border-color: rgba(0,0,0,0) #F3F3F3 rgba(0,0,0,0) rgba(0,0,0,0); 
+}
+
+.con p{
+    width: 350px;
+    font-size: 16px;
+    color: #8b8d94;
+    font-weight: 400;
+    line-height: 28px;
+    float: left;
+    margin: 0;
+}
+
+.con .bottom{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+.con .bottom .step{
+    flex: 3;
+    -webkit-flex: 3;
+    -ms-flex: 3;
+    width: 100%;
+    height: 54px;
+    background-color: #373942;
+    border-bottom-left-radius: 6px;
+    display: flex;
+}
+
+.con .bottom .step span{
+    flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    line-height: 54px;
+    color: #fff;
+    margin-left: 25px;
+    font-size: 18px;
+}
+
+.con .bottom .step ul{
+    flex: 2;
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    list-style: none;
+    height: 10px;
+    margin: 23px 0;
+    padding-left: 15px;
+}
+
+.con .bottom .step ul li{
+    position: relative;
+    height: 7px;
+    width: 7px;
+    margin: 0 10px;
+    float: left;
+    border-radius: 50%;
+    background: none;
+    border: 1px solid #535560;
+}
+
+.con .bottom .step ul li:first-child:before{
+    width: 0;
+}
+
+.con .bottom .step ul li:before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    border-top: 1px solid #535560;
+    left: -21px;
+    top: 3px;
+}
+
+.con .bottom .step ul li.true{
+    background-color: #7a7d86;
+}
+
+.con .bottom .step ul li.active{
+    background-color: #fff;
+    box-shadow: 0 0 6px rgba(255,255,255,0.78);
+}
+
+
+.close{
+    cursor: pointer;
+}
+
+.close:before, .close:after{
+    content: "";
+    position: absolute;
+    height: 13px;
+    width: 13px;
+    top: 36px;
+    right: 31px;
+    border-top: 2px solid #7c7c7c;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.close:before{
+    right: 40px;
+     -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.btnnxt{
+    flex: 1;
+    background-color: #6cb5f3;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    border-bottom-right-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3;
+}
+
+.btnnxt:hover{
+    background-color: #6BA5D6;
+    transition: all 0.3s;
+}
+
+btnnxt:active{
+    background-color: #5F8AAF;
+}
+
+.slider-con{
+    width: 350px;
+    margin: 0 25px;
+    overflow: hidden;
+}
+
+.slider-turn{
+    width: 10000px;
+}
+
+/*Search Table */
+
+ /*Table which will display the contact details from the json file*/
+    table{
+        width:50%;
+        position: absolute;
+        top: 56%;
+        left: 25%;
+    }   
+    th{
+        background: #f1f1f1;
+        font-weight: bold;
+        padding:6px;
+        border: 3px solid $yellowtxt;
+        cursor: pointer; 
+    }
+    td{
+        background: #dcefff;
+        padding: 6px;
+    }
+    td:hover{
+        background: #adc3f7;
+    }
+
+/*Search bar to allow active searching for the contacts within the address book*/
+    .searchbar{
+        width:100%;
+        position: relative;
+        display: flex;
+    }
+    #search{
+        width:100%;
+        border: 3px solid $maincolor;
+        border-right:none;
+        padding: 5px;
+        height:20px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9DBFAF;
+    }
+    #search:focus{
+        color: $maincolor;
+    }
+    .search_btn{
+        width:40px;
+        height: 36px;
+        border: 1px solid $maincolor;
+        background: $maincolor;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    .search_ctnt{
+        width: 30%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
+    
+     #result {
+        position: absolute;
+        left: 50%;
+        top: 100%;
+    }
+   #count{
+        position: absolute;
+        left:100%;
+        top: 8%;
+    }
+    #details{ 
+        position: absolute;
+        left:60%;
+        top:50%;
+        width: 100px;
+        height: 200px;
+    }

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title>Fast Addresses</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/Fast%20Addresses.png">
+    <link rel = "stylesheet" type = "text/css" href = "jquery-ui.css">
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-tour.css">
+<!--    <script src="JS/script.js"></script>-->
+    <script src="JS/bootstrap-tour.min.js"></script>
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+    
+<body>
+
+    
+<header role="banner">
+    <div class="curvedbanner">
+    <div class="logo"><img src="images/Fast%20Addresses%202.png"></div>    
+<!--<h1>Fast Addresses</h1>-->
+    </div>
+    </header>    
+<!--Start Of Guide-->
+  <div class="con">
+    <h3>Helpful Guide</h3>
+    <span class="close"></span>
+    <div class="slider-con">
+      <div class="slider-turn">
+        <p>This is your Guided Tool Tip for our Website of Fast Addresses!</p>
+          
+          <p>There will be a search bar along the top that will allow you to click on and will allow you to search for someone that you have saved.</p>
+          
+          <p>To sort by alphabetic click "Name" at the top of the table</p>
+          
+          <p>As can be seen there is a search results that will count how many names are viewed at once.</p>
+          
+          <p>If the guide is needed again there will be a button along the top of the website with the word "Guide" once clicked on the guide will re-appear</p>
+        </div>
+      </div>
+      
+      <div class="bottom">
+      <div class="step">
+          <span></span>
+          <ul>
+          <li data-num="1"></li>
+          <li data-num="2"></li>
+          <li data-num="3"></li>
+          <li data-num="4"></li>
+          <li data-num="5"></li>
+          </ul></div>
+      <button class="btnnxt">Next</button>
+      </div>
+    </div>
+    <button class="open">Guide</button>
+    
+
+<!--Search Bar to allow you to be able to refine the names on the contacts in the table-->
+<div class = "search_ctnt">
+<div class = "searchbar">
+<input type = "text" id = "search" placeholder = "Live Search">
+<button type = "submit" class = "search_btn"><i class = "fa fa-search"></i></button>
+<div id = "result">Results Found:
+<div id="count" name="count">
+</div></div>
+</div>
+</div>
+   
+<!--Table which will be populated with faker data for the contact information displayed within the table-->
+<table id="contact_tbl">
+<tr>
+<thead>
+<th>Name</th>
+    </thead></tr>
+    <tbody></tbody>
+</table>      
+
+
+
+
+    
+    <footer>
+    <h2>&copy; Fast Addresses INC 2019</h2>
+    <div class="footerbox">
+        </div>
+    </footer>
+</body>
+
+    
+    <script>
+        
+
+    $(document).ready(function () {
+  var len = $('.con p').length;
+  var wid = parseInt($('.con p').css("width"));
+  var max = (len - 1) * wid;
+  $("ul li[data-num='1']").addClass('active');
+  $('.step span').html('Step 1');
+  
+  $('body').on('click','.btnnxt', function(){
+    var marL = parseInt($('.slider-turn').css('margin-left'));
+    var modulo = marL%wid;
+    if (-marL < max && modulo == 0) {
+      marL -= wid;
+   
+      $('.slider-turn').animate({
+        'margin-left':marL
+      },300);
+      $('ul li.active').addClass('true').removeClass('active');
+      var x = -marL/wid +1;
+      $('ul li[data-num="'+x+'"]').addClass('active');
+      $('.step span').html("Step "+x);
+    }
+    else  {}
+  });
+  
+  $('body').on('click','.close',function(){
+    $('.con').animate({
+      'opacity':0
+    },600);
+    $('.con').animate({
+      'top':-1200
+    }, {
+      duration: 2300,
+      queue: false
+    });
+    $('.open').animate({
+      'top':'50%'
+    });
+  });
+  
+  $('body').on('click','.open',function() {
+    $('.open').animate({
+      'top':-1000
+    });
+    $('.con').animate({
+      'opacity':1
+    },400);
+    $('.con').animate({
+      'top':'50%'
+    }, {
+      duration: 800,
+      queue: false
+    });
+  });
+});
+        
+        
+        
+//jQuery code will activate once the document has successfully loaded.
+$(document).ready(function(){
+//ajax call for the data.json file this will create a table for the length of the data which has been created. This will generate the table data which would then be output onto the screen. This means that the user would be able to see the names displayed within the online address book. the loop will execute until it gets to the maximum number within the json file and then outputted within the table on the page. 
+
+        var hover_data = '';
+       var contact_data = [];
+    $.getJSON( "data.json")
+  .done(function(json) {
+    $.each(json, function(key, value){
+        contact_data.push("<tr>");
+        contact_data.push("<td id ='" + key + "' class = 'contact' title = 'name'>" + value.name +"</td>");
+    });
+       
+            $('<tbody/>', {html: contact_data.join("")}).appendTo("#contact_tbl");
+    })
+
+  .fail(function( jqxhr, textStatus, error ) {
+  alert("Connection unsuccessful. Please ensure you are connected to a server before trying again")
+});
+//hover to display the details for each person
+    
+$( function() {
+    $(document).tooltip();
+  });
+
+
+$.get("data.json", function(json) {
+    $.each(json, function(key, value){
+     hover_data += value.phone;
+        hover_data += value.email;
+        hover_data += value.job;
+        hover_data += value.streetName;
+        hover_data += value.city;
+        hover_data += value.zipCode;
+    for(var i; i<hover_data.length; i++){ 
+        var number = hover_data[i];
+        console.log(number);
+};
+    });
+ $(document).on('mouseover','td',function(){  
+    var current = $(this).attr("id");
+        console.log(current);
+$(".contact").attr("title", hover_data);
+});
+});
+    
+     
+//code to sort the table alphabetically. This will allow the user to see the details arranged within the page. This will allow the user to sort the contact information which loads to be in alphabetical order when they click the heading of the table. 
+$('th').click(function(){
+    //variable which assigns the table to the function so it knows what to use
+    var tbl = $(this).parents('table').eq(0);
+    //variable for contact data in the table. Will be used to sort the information within the table. will then sort the table using the compare function which has been defined to compare sort the data
+    var cntact_data= tbl.find('tr:gt(0)').toArray().sort(compare($(this).index()));
+    //this will run a for loop as long as the data length is run and will sort the data the length of the table.
+    for (var i = 0; i < cntact_data.length; i++){
+        tbl.append(cntact_data [i]);
+                                                }
+})
+    
+//compare function which will evaluate the data in the table and will sort it into alphabetically order so that the table would have been sorted into alphabetical order. 
+function compare(index) {
+    //internal function which will activate when the compare function has been called. This will ensure that the data has been correctly sorted so that it will be displayed in alphabetical order. 
+    return function(a, b) {
+    //variable within the function which will it will use to compare the data which are A and B which are sensible variables to use which will mean that the data within the table will be sorted. this will take the parameter index from the compare variable so that it will understand which value has been assigned and the variable A will take in a from the funtion which will be returned when this is activated and the B variable will take in the b parameter.
+        var A = ContactName(a, index), B = ContactName(b, index);
+    //will change the A variable and the B variable to be numeric so that the value can be compared and changed if B is less than A and then convert back to string and compare to ensure that the data has been arranged to be alphabetical.
+        return $.isNumeric(A) && $.isNumeric(B) ? A - B : A.toString().localeCompare(B);
+    }
+}
+    //function getCellValue will return the value for the row of the table. 
+function ContactName(row, index){ 
+    //will return the row child as the element which makes up the row of the table and adds this to the index as text so that it will be loaded into the compare function so that the table could successfully sort the data within the table.
+        return $(row).children('td').eq(index).text();
+    }
+    
+//live search the table to allow the user to be able to locate the person that they would like to access information on easily within the address book which has been developed. 
+$('#search').on('keyup', function(){
+//search will activate on the key up function which means that as the user enters keys the information should refine on what has been displayed. 
+    var search = $(this).val().replace('/[A-Z a-z 0-9]/');
+    //looks at the table and each row of the table to ensure that the data within the table will be refined when the search is being carried out.
+    $("table tr").each(function(index){
+        //conditional statement will run as long as the index is not equal to zero as this is the heading of the table. 
+        if(index !== 0){
+            //assigns the variable name using the this selector which identifies that the name would be used to show or hide as it would be required. 
+            var name = $(this);
+            //will find the name from the td elements within table which is what they are contained within on the page. 
+            name.find('td').each(function(){
+                //reference variable which will be assigned the text name of the contact within the table that is being searched for. 
+                var ref = $(this).text();
+                //conditional statement which is used to use the ref variable and .indexof which uses the search variable value to check if the number is not the one being search for and this will mean that the unrequired names will be hidden.
+                if(ref.indexOf(search)<0){
+                    name.hide();
+                }
+                //else statement which will display the name which is being searched for. This will mean that the names will be displayed and refined as the search is carried out.
+                else{
+                    name.show();
+                    return false;
+                }
+            });
+        }
+    });
+//will count the number of results visible on the screen and will display a number to the user. Allows them to see the number of results given.
+var rowCount = $('#contact_tbl>tbody>tr>td:visible').length;
+ document.getElementById('count' ).innerHTML=rowCount;
+});
+
+    //closes all the scripting
+});
+    
+
+</script>
+
+</html>

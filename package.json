@@ -1,0 +1,33 @@
+{
+  "name": "node-test",
+  "version": "1.0.0",
+  "description": "Hello World",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Johnston",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^9.7.3",
+    "body-parser": "^1.19.0",
+    "cssnano": "^4.1.10",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "fs": "0.0.1-security",
+    "gulp": "^4.0.2",
+    "gulp-coffee": "^3.0.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "path": "^0.12.7",
+    "postcss": "^7.0.24",
+    "sass": "^1.23.7"
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.0"
+  }
+}
